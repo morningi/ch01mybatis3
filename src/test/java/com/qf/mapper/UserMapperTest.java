@@ -1,5 +1,6 @@
 package com.qf.mapper;
 
+import com.qf.pojo.Course;
 import com.qf.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -123,6 +124,25 @@ public class UserMapperTest {
             List<User> userList = userMapper.getListByIn3(map);
             for (User u:userList){
                 System.out.println(u);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testCollectionMap(){
+        try {
+            InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            SqlSession sqlSession = sqlSessionFactory.openSession(true);
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            List<User> listByUserAndCourse = userMapper.getListByUserAndCourse();
+            for(User u:listByUserAndCourse){
+                System.out.println(u);
+                for (Course c:u.getCourseList()){
+                    System.out.println(c);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

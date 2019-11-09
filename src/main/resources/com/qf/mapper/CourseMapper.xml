@@ -5,7 +5,6 @@
 <mapper namespace="com.qf.mapper.CourseMapper">
     <resultMap id="courseMap" type="course">
         <!--主键用id标签映射,其他字段用result映射-->
-
         <id property="courseId" column="id"></id>
         <result property="courseName" column="cname"></result>
         <result property="courseHour" column="chours"></result>

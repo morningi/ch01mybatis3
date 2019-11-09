@@ -1,9 +1,20 @@
 package com.qf.pojo;
 
+import java.util.List;
+
 public class User {
     private int uid;
     private String uname;
     private String upwd;
+    private List<Course> courseList;
+
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
+    }
 
     public int getUid() {
         return uid;
@@ -49,6 +60,7 @@ public class User {
                 "uid=" + uid +
                 ", uname='" + uname + '\'' +
                 ", upwd='" + upwd + '\'' +
+                ", courseList=" + courseList +
                 '}';
     }
 }

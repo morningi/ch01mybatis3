@@ -13,4 +13,6 @@ public interface UserMapper {
     public List<User> getListByIn(List<Integer> ids);
     public List<User> getListByIn2(int[] ids);
     public List<User> getListByIn3(Map<String,Object> map);
+    //查询所有的用户机器应对的课程列表
+    public List<User> getListByUserAndCourse();
 }

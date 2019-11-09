@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TeacherMapper {
     public List<Teacher> getTeacherAndCourseList();
+    public List<Teacher> getTeacherAndCourseList2();
+
 }

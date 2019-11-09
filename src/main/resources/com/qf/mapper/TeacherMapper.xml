@@ -11,12 +11,28 @@
         <id column="tid" property="tid"></id>
         <result column="tname" property="tname"></result>
         <!--一对一或者一对多时-->
-        <association property="course" javaType="course" column="cid" select="getCourse"></association>
+        <association property="course" javaType="course" column="cid" select="com.qf.mapper.CourseMapper.getCourse"></association>
     </resultMap>
 
+    <resultMap id="teacherMap2" type="teacher">
+        <id column="tid" property="tid"></id>
+        <result column="tname" property="tname"></result>
+        <association property="course" javaType="course" column="cid" resultMap="courseMap"></association>
+    </resultMap>
+
+    <resultMap id="courseMap" type="course">
+        <!--主键用id标签映射,其他字段用result映射-->
+        <id property="courseId" column="id"></id>
+        <result property="courseName" column="cname"></result>
+        <result property="courseHour" column="chours"></result>
+    </resultMap>
 
     <select id="getTeacherAndCourseList" resultMap="teacherMap">
         select * from teacher
+    </select>
+
+    <select id="getTeacherAndCourseList2" resultMap="teacherMap2">
+        select * from teacher inner join course on teacher.cid=course.cid
     </select>
 </mapper>  
     

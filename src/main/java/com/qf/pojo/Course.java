@@ -4,6 +4,15 @@ public class Course {
     private int courseId;
     private String courseName;
     private String courseHour;
+    private int uid;
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
 
     public int getCourseId() {
         return courseId;

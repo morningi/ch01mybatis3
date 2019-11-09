@@ -83,5 +83,24 @@
             </if>
         </where>
     </select>
+    
+    <resultMap id="userMap" type="user">
+        <result property="uname" column="uname"></result>
+        <result property="upwd" column="upwd"></result>
+        <!--collection用于集合映射,property表示集合的属性名,javaType表示集合的类型,可省略
+            ofType表示集合中的数据类型,resultMap表示映射的方式,即字段和属性做映射
+        -->
+        <collection property="courseList" javaType="java.util.ArrayList" ofType="course" resultMap="courseMap"></collection>
+    </resultMap>
+    <resultMap id="courseMap" type="course">
+        <id property="courseId" column="id"></id>
+        <result property="courseName" column="cname"></result>
+        <result property="courseHour" column="chours"></result>
+        <result property="uid" column="uid"></result>
+    </resultMap>
+    <!--嵌套结果映射实现一对多查询-->
+    <select id="getListByUserAndCourse" resultMap="userMap">
+        select * from user inner join course on user.uid=course.uid
+    </select>
 </mapper>  
     

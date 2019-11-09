@@ -30,5 +30,22 @@ public class TeacherMapperTest {
         }
 
     }
+    @Test
+    public void getTeacherAndCourseList2(){
+        try {
+            InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            SqlSession sqlSession = sqlSessionFactory.openSession(true);
+            TeacherMapper teacherMapper = sqlSession.getMapper(TeacherMapper.class);
+            List<Teacher> teacherList = teacherMapper.getTeacherAndCourseList2();
+            for(Teacher t:teacherList){
+                System.out.println(t);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }
